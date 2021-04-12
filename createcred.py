@@ -74,11 +74,16 @@ class Credentials()
    
         except PermissionError:
             os.remove(self.__key_file)
-            print("A Permission error occurred.\n Please re run the script")
+            print("An error occurred.\n Please re run the script")
             sys.exit()
 
             self.__username = ""
         self.__password = ""
         self.__key = ""
         self.__key_file
+
+         print("**"*20)
+   
+if __name__ == "__main__":
+    main()
    
