@@ -1,10 +1,10 @@
-    import random
+ #!/usr/bin/env python3.9
 
-    from user import User 
+
+from user import User 
 
 
 def main():
-
     while True:
         print("Good to see You!!!")
         print('\n')
@@ -69,6 +69,8 @@ def main():
                 print('\n')
 
         elif short_code == 'ex':
+            print('\n')
+            print(" Thank you...")
             break 
         else:
                 print("enter valid code to continue")
