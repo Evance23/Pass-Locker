@@ -112,7 +112,7 @@ def main():
             print(f"Hello {username}.Welcome To Pass-Lock")  
             print('\n')
     while True:
-        print("Enter:\n nc - New Credential \n sc - Display Credentials \n fc - Find a credential \n gc - Generate A randomn password \n D - Delete credential \n EX - Exit the application \n")
+        print("Enter:\n nc - New Credential \n sc - Display Credentials \n fc - Find a credential \n gc - Generate A randomn password \n dl - Delete credential \n ex - Exit the application \n")
     
         if short_code == "nc":
             print("New Credential")
@@ -131,13 +131,14 @@ def main():
                     break
                 else:
                     print("Invalid password please try again")
+
             save_credentials(create_new_credential(account,userName,password))
             print('\n')
             print(f"Account Credential for: {account} - UserName: {userName} - Password:{password} created succesfully")
             print('\n')
-            elif short_code == "dc":
+            elif short_code == "sc":
             if display_accounts_details():
-                print("Here's your list of acoounts: ")
+                print("Accounts: ")
                  
                 print('*' * 30)
                 print('_'* 30)
@@ -149,7 +150,7 @@ def main():
                 print("You don't have any credentials saved yet..........")
         elif short_code == "fc":
             print("Enter the Account Name you want to search for")
-            search_name = input().lower()
+            # search_name = input().lower()
             if find_credential(search_name):
                 search_credential = find_credential(search_name)
                 print(f"Account Name : {search_credential.account}")
@@ -159,18 +160,17 @@ def main():
             else:
                 print("That Credential does not exist")
                 print('\n')
-        elif short_code == "d":
-            print("Enter the account name of the Credentials you want to delete")
-            search_name = input().lower()
+        elif short_code == "dl":
+            print("Enter Account Name")
             if find_credential(search_name):
                 search_credential = find_credential(search_name)
                 print("_"*50)
                 search_credential.delete_credentials()
                 print('\n')
-                print(f"Your stored credentials for : {search_credential.account} successfully deleted!!!")
+                print(f"Credentials : {search_credential.account} successfully deleted!!!")
                 print('\n')
             else:
-                print("Credentials Unavailble")
+                print("Credentials Unavailable")
 
         elif short_code == 'gp':
 
@@ -180,7 +180,7 @@ def main():
             print("Adios!")
             break
         else:
-            print("Invalid Details..Try AGain")
+            print("Invalid Details..Try AGgin")
     else:
         print("Enter Valid Data")
 
