@@ -1,80 +1,54 @@
- #!/usr/bin/env python3.9
+from user import User
+# from credentials import Credentials
 
+def function():
+    print("Welcome to Pass-Lock")
 
-from user import User 
+function()
 
+def create_new_user(username,password):
+    '''
+    Function to create a new user with a username and password
+    '''
+    new_user = User(username,password)
+    return new_user
 
-def main():
-    while True:
-        print("Good to see You!!!")
-        print('\n')
-        print("to create new user use 'nu': to log in use 'lg' or 'ex' to exit")
-        short_code = input().lower()
-        print('\n')
+def save_user(user):
+    '''
+    Function to save a new user
+    '''
+    user.save_user()
+def display_user():
+    """
+    Function to display existing user
+    """
+    return User.display_user()
+def login_user(username,password):
+    """
+    function that checks whether a user exist and then login the user in.
+    """
+  
+    check_user = Credentials.verify_user(username,password)
+    return check_user
+def create_new_credential(account,userName,password):
+    """
+    Function that creates new credentials for a given user account
+    """
+    new_credential = Credentials(account,userName,password)
+    return new_credential
+def save_credentials(credentials):
+    """
+    Function to save Credentials to the credentials list
+    """
+    credentials. save_details()
+def display_accounts_details():
+    """
+    Function that returns all the saved credential.
+    """
+    return Credentials.display_credentials()
 
-        if short_code == "nu":
-            print("create username")
-            created_user_name = input()
-
-            print('create password')
-            created_user_password = input()
-
-            print('validate!')
-            validate_password = input()
-
-            while validate_password  != created_user_password:
-                print("password did not match!")
-                print("enter password")
-                created_user_password = input()
-                print("validate password")
-                validate_password = input()
-            else:
-                print(f"welcome {created_user_name}! account created successfully")
-                print('\n')
-                print("log in")
-                print("Username")
-                entered_username = input()
-                print("enter password")
-                entered_password = input()
-            while entered_username != created_user_name or entered_password != created_user_password:
-                print("Invalid log ins")
-                print("Username")
-                entered_username = input()
-                print("enter password")
-                entered_password = input()
-            else:
-                print(f"Welcome: {entered_username} to your account")
-                print('\n')
-
-        elif short_code == 'lg':
-            print("welcome")
-            print("Username")
-            default_user_name = input()
-            
-
-            print("Enter password")
-            default_user_password = input()
-            print('\n')
-            while default_user_name != 'admin' or  default_user_password != '12345':
-                print("Invalid username or password. Username 'admin' and password '12345'")
-                print("Username")
-                default_user_name = input()
-
-                print("Enter password")
-                default_user_password = input()
-                print('\n')
-            else:
-                print("Log in successful")
-                print('\n')
-                print('\n')
-
-        elif short_code == 'ex':
-            print('\n')
-            print(" Thank you...")
-            break 
-        else:
-                print("enter valid code to continue")
-
-
-if __name__ == '_main_':
-    main()
+def delete_credential(credentials):
+    """
+    Function to delete a Credentials from credentials list
+    """
+    credentials.delete_credentials()
