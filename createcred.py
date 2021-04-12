@@ -47,10 +47,8 @@ class Credentials()
    
    
     def create_cred(self):
-        """
-        This function is responsible for encrypting the password and create  key file for
-        storing the key and create a credential file with user name and password
-        """
+        
+
    
         cred_filename = 'CredFile.ini'
    
@@ -58,4 +56,29 @@ class Credentials()
             file_in.write("#Credential file:\nUsername={}\nPassword={}\nExpiry={}\n"
             .format(self.__username,self.__password,self.__time_of_exp))
             file_in.write("++"*20)
+
+             if(os.path.exists(self.__key_file)):
+            os.remove(self.__key_file)
+
+            os_type = sys.platform
+            if (os_type == 'linux'):
+                self.__key_file = '.' + self.__key_file
+   
+            with open(self.__key_file,'w') as key_in:
+                key_in.write(self.__key.decode())
+
+                if(os_type == 'win32'):
+                    ctypes.windll.kernel32.SetFileAttributesW(self.__key_file, 2)
+                else:
+                    pass
+   
+        except PermissionError:
+            os.remove(self.__key_file)
+            print("A Permission error occurred.\n Please re run the script")
+            sys.exit()
+
+            self.__username = ""
+        self.__password = ""
+        self.__key = ""
+        self.__key_file
    
