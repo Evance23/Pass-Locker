@@ -52,3 +52,31 @@ def delete_credential(credentials):
     Function to delete a Credentials from credentials list
     """
     credentials.delete_credentials()
+def generate_Password():
+    '''
+    generates a random password for the user.
+    '''
+    auto_password=Credentials.generatePassword()
+    return auto_password
+def copy_password(account):
+    """
+    A funct that copies the password using the pyperclip framework
+    We import the framework then declare a function that copies the emails.
+    """
+    return Credentials.copy_password(account)
+
+def main():
+    print("Hello...\n nu ---  Create New Account  \n li ---  Have An Account  \n")
+    if short_code == "nu":
+        print("Sign Up")
+        print('*' * 50)
+        username = input("User_name: ")
+        while True:
+            print(" TP - To type your own pasword:\n GP - To generate random Password")
+            password_Choice = input().lower().strip()
+            if password_Choice == 'tp':
+                password = input("Enter Password\n")
+                break
+            elif password_Choice == 'gp':
+                password = generate_Password()
+                break
